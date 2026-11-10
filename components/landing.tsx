@@ -135,7 +135,7 @@ export default function Landing({ locale }: { locale: Locale }) {
             <span>{t.brand}</span>
           </a>
           <nav className="desktop-nav" aria-label="Main navigation">
-            {t.nav.map((item, i) => <a key={item} href={`#${navIds[i]}`}>{item}</a>)}
+            {t.nav.map((item, i) => <a key={item} href={i === 2 ? (isAr ? "/pricing" : "/en/pricing") : `#${navIds[i]}`}>{item}</a>)}
           </nav>
           <div className="nav-actions">
             <a className="language-link" href={isAr ? "/en" : "/"}><Languages size={16} />{isAr ? "EN" : "العربية"}</a>
@@ -143,7 +143,7 @@ export default function Landing({ locale }: { locale: Locale }) {
             <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? t.menuClose : t.menuOpen}>{menuOpen ? <X /> : <Menu />}</button>
           </div>
         </div>
-        {menuOpen && <nav className="mobile-nav">{t.nav.map((item, i) => <a key={item} href={`#${navIds[i]}`} onClick={() => setMenuOpen(false)}>{item}</a>)}<a href={isAr ? "/en" : "/"}>{isAr ? "English" : "العربية"}</a></nav>}
+        {menuOpen && <nav className="mobile-nav">{t.nav.map((item, i) => <a key={item} href={i === 2 ? (isAr ? "/pricing" : "/en/pricing") : `#${navIds[i]}`} onClick={() => setMenuOpen(false)}>{item}</a>)}<a href={isAr ? "/en" : "/"}>{isAr ? "English" : "العربية"}</a></nav>}
       </header>
 
       <section className="hero section-wrap">
@@ -152,7 +152,7 @@ export default function Landing({ locale }: { locale: Locale }) {
           <h1>{t.heroTitle}<br /><span>{t.heroAccent}</span></h1>
           <p className="hero-description">{t.heroBody}</p>
           <div className="hero-actions">
-            <a className="button button-primary" href={playUrl} target="_blank" rel="noreferrer">{t.primary}<IconArrow size={18} /></a>
+            <a className="button button-primary" href={isAr ? "/pricing" : "/en/pricing"} target="_blank" rel="noreferrer">{t.primary}<IconArrow size={18} /></a>
             <a className="button button-quiet" href="#workflow">{t.secondary}<span className="play-circle">▶</span></a>
           </div>
           <div className="hero-proof">{t.proof.map((item, i) => <span key={item}><Check size={15} />{item}</span>)}</div>

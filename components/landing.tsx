@@ -123,7 +123,8 @@ export default function Landing({ locale }: { locale: Locale }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const navIds = ["workflow", "features", "pricing", "faq"];
-  const IconArrow = isAr ? ArrowLeft : ArrowUpLeft;\n  const featureItems = t.features as [string, string, typeof ScanLine][];
+  const IconArrow = isAr ? ArrowLeft : ArrowUpLeft;
+  const featureItems = t.features as [string, string, typeof ScanLine][];
 
   return (
     <main lang={t.lang} dir={t.dir}>

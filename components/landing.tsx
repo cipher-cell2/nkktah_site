@@ -196,13 +196,37 @@ export default function Landing({ locale }: { locale: Locale }) {
         <div className="features-grid">{featureItems.map(([title, desc, Icon]) => <article className="feature-card" key={title as string}><span className="feature-icon"><Icon size={21} /></span><h3>{title as string}</h3><p>{desc as string}</p></article>)}</div>
       </div></section>
 
+      <section className="product-section section-wrap">
+        <div className="product-copy">
+          <span className="eyebrow">{isAr ? "داخل التطبيق" : "Inside the app"}</span>
+          <h2>{isAr ? "واجهة واضحة، من أول كشف إلى آخر تقرير." : "A clear workspace, from the first sheet to the final report."}</h2>
+          <p>{isAr ? "المسح ليس كل شيء. نُقطة تجمع إدخال العلامات، الأقسام، التقارير، التحليل، والمزامنة في تجربة واحدة حتى تبقى كل خطوة مرتبطة بما بعدها." : "Scanning is only one part of the job. Nuktah brings grade entry, classes, reports, analysis and sync into one connected workflow."}</p>
+          <div className="product-points">
+            {(isAr
+              ? [["تقارير PDF وExcel","صدّر النتائج والتقارير بصيغ عملية."],["تحليل النتائج","شاهد أداء التلاميذ والأقسام بوضوح."],["مزامنة البيانات","احتفظ ببياناتك متاحة عبر أجهزتك بأمان."]]
+              : [["PDF & Excel reports","Export results and reports in practical formats."],["Result analysis","Understand student and class performance at a glance."],["Data sync","Keep your data available across devices securely."]]
+            ).map(([title, desc]) => (
+              <div className="product-point" key={title}>
+                <span className="product-check"><Check size={14} /></span>
+                <div><b>{title}</b><span>{desc}</span></div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="screenshot-frame">
+          <div className="screenshot-topbar"><span /><span /><span /><b>{isAr ? "معاينة من التطبيق" : "App preview"}</b></div>
+          <img src="https://nuktah.app/screens/phone_01.webp" alt={isAr ? "لقطة شاشة من تطبيق نُقطة" : "Nuktah app screenshot"} />
+          <div className="screenshot-glow" />
+        </div>
+      </section>
+
       <section className="control-section section-wrap"><div className="control-visual"><div className="control-card"><div className="control-card-top"><span><ShieldCheck size={17} /> {isAr ? "مراجعة الأستاذ" : "Teacher review"}</span><span className="control-badge"><Check size={12} />{isAr ? "قيد المراجعة" : "In review"}</span></div>{t.rows.map((r, i) => <div className="control-row" key={r[0]}><span className="control-avatar">{r[0].slice(0,1)}</span><span className="control-name">{r[0]}</span><strong>{r[1]}</strong><span className={i === 1 ? "edit-tag" : "ok-tag"}>{i === 1 ? (isAr ? "تعديل" : "Edit") : <Check size={14} />}</span></div>)}<div className="control-confirm"><LockKeyhole size={15} />{t.safe}</div></div></div><div className="control-copy"><span className="eyebrow">{t.controlEyebrow}</span><h2>{t.controlTitle}</h2><p>{t.controlBody}</p><ul>{t.controlPoints.map((point) => <li key={point}><Check size={17} />{point}</li>)}</ul></div></section>
 
       <section className="pricing-section" id="pricing"><div className="section-wrap pricing-wrap"><div className="section-heading centered"><span className="eyebrow">{t.pricingEyebrow}</span><h2>{t.pricingTitle}</h2><p>{t.pricingBody}</p></div><div className="pricing-card"><div className="pricing-main"><span className="pricing-pill"><Zap size={14} />{t.pricingTag}</span><h3>{t.pricingTitleCard}</h3><p>{t.pricingDesc}</p><ul>{t.pricingItems.map((item) => <li key={item}><Check size={17} />{item}</li>)}</ul><a className="button button-primary" href={playUrl} target="_blank" rel="noreferrer">{t.login}<IconArrow size={17} /></a></div><div className="pricing-aside"><div className="credit-illustration"><div className="credit-card-back" /><div className="credit-card-front"><span className="credit-chip" /><span className="credit-dots">•••• •••• ••••</span><span className="credit-brand">نُقطة</span></div><span className="credit-spark spark-a">✳</span><span className="credit-spark spark-b">✦</span></div><div className="payment-note"><WalletCards size={18} /><span>{t.payment}</span></div><small>{t.pricingNote}</small></div></div></div></section>
 
       <section className="faq-section section-wrap" id="faq"><div className="faq-intro"><span className="eyebrow">{t.faqEyebrow}</span><h2>{t.faqTitle}</h2><p>{t.support}</p></div><div className="faq-list">{t.faqs.map(([q,a], i) => <article className={openFaq === i ? "faq-item is-open" : "faq-item"} key={q}><button onClick={() => setOpenFaq(openFaq === i ? null : i)} aria-expanded={openFaq === i}><span>{q}</span><ChevronDown size={18} /></button>{openFaq === i && <p>{a}</p>}</article>)}</div></section>
 
-      <section className="final-cta"><div className="final-cta-inner"><div className="final-spark"><Sparkles size={22} /></div><h2>{t.finalTitle}</h2><p>{t.finalBody}</p><a className="button button-light" href={playUrl} target="_blank" rel="noreferrer">{t.finalCta}<IconArrow size={17} /></a><small>{t.play}</small></div><div className="cta-decoration cta-decoration-one" /><div className="cta-decoration cta-decoration-two" /></section>
+      <section className="final-cta"><div className="final-cta-inner"><div className="final-spark"><Sparkles size={22} /></div><h2>{t.finalTitle}</h2><p>{t.finalBody}</p><div className="cta-trust"><ShieldCheck size={14} />{isAr ? "مراجعة بشرية قبل اعتماد النتائج" : "Human review before results are confirmed"}</div><a className="button button-light" href={playUrl} target="_blank" rel="noreferrer">{t.finalCta}<IconArrow size={17} /></a><small>{t.play}</small></div><div className="cta-decoration cta-decoration-one" /><div className="cta-decoration cta-decoration-two" /></section>
 
       <footer className="site-footer"><div className="footer-inner"><a className="brand footer-brand" href={isAr ? "/" : "/en"}><span className="brand-mark"><span /></span><span>{t.brand}</span></a><p>{t.footer}</p><div className="footer-links"><a href={isAr ? "/privacy" : "/en/privacy"}>{t.footerLinks[0]}</a><a href={isAr ? "/terms" : "/en/terms"}>{t.footerLinks[1]}</a><a href={isAr ? "/support" : "/en/support"}>{t.footerLinks[2]}</a></div><span className="copyright">© {new Date().getFullYear()} Nuktah</span></div></footer>
     </main>

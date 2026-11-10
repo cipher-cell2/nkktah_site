@@ -1,8 +1,20 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    { url: "https://nuktah.app", changeFrequency: "monthly", priority: 1 },
-    { url: "https://nuktah.app/en", changeFrequency: "monthly", priority: 0.9 }
-  ];
+  const routes = [
+    ["", 1],
+    ["/en", 0.9],
+    ["/privacy", 0.5],
+    ["/terms", 0.5],
+    ["/support", 0.6],
+    ["/en/privacy", 0.5],
+    ["/en/terms", 0.5],
+    ["/en/support", 0.6]
+  ] as const;
+
+  return routes.map(([path, priority]) => ({
+    url: `https://nuktah.app${path}`,
+    changeFrequency: "monthly" as const,
+    priority
+  }));
 }

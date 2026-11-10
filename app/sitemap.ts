@@ -4,9 +4,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     ["", 1],
     ["/en", 0.9],
+    ["/pricing", 0.8],
     ["/privacy", 0.5],
     ["/terms", 0.5],
     ["/support", 0.6],
+    ["/en/pricing", 0.8],
     ["/en/privacy", 0.5],
     ["/en/terms", 0.5],
     ["/en/support", 0.6]

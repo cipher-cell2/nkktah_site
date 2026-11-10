@@ -152,7 +152,7 @@ export default function Landing({ locale }: { locale: Locale }) {
           <h1>{t.heroTitle}<br /><span>{t.heroAccent}</span></h1>
           <p className="hero-description">{t.heroBody}</p>
           <div className="hero-actions">
-            <a className="button button-primary" href={isAr ? "/pricing" : "/en/pricing"} target="_blank" rel="noreferrer">{t.primary}<IconArrow size={18} /></a>
+            <a className="button button-primary" href={playUrl} target="_blank" rel="noreferrer">{t.primary}<IconArrow size={18} /></a>
             <a className="button button-quiet" href="#workflow">{t.secondary}<span className="play-circle">▶</span></a>
           </div>
           <div className="hero-proof">{t.proof.map((item, i) => <span key={item}><Check size={15} />{item}</span>)}</div>

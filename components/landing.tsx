@@ -4,7 +4,7 @@ import { useState } from "react";
 import {
   ArrowLeft, ArrowUpLeft, Check, ChevronDown, CircleHelp, FileSpreadsheet,
   FileText, Fingerprint, GraduationCap, Languages, LockKeyhole, Menu,
-  ScanLine, ShieldCheck, Sparkles, Upload, WalletCards, X, Zap
+  ScanLine, ShieldCheck, Sparkles, Upload, WalletCards, X, Zap, Crop, ArrowRight, Home, Folder, BarChart3, UserRound
 } from "lucide-react";
 
 type Locale = "ar" | "en";
@@ -19,7 +19,7 @@ const copy = {
     primary: "اكتشف التطبيق", secondary: "كيف تعمل نُقطة؟",
     proof: ["مصمّمة للأستاذ الجزائري", "مراجعتك قبل كل حفظ", "بدون اشتراك شهري"],
     previewLabel: "معاينة توضيحية", phoneTitle: "كشف النقاط", phoneSub: "القسم: 3 متوسط · الرياضيات",
-    scan: "جاري قراءة الورقة…", found: "تم العثور على العلامات", student: "التلميذ", mark: "العلامة",
+    scan: "جار قراءة النقاط…", scanProgress: "40%", cancel: "إلغاء", scanStart: "بدء المسح", found: "تم العثور على العلامات", student: "التلميذ", mark: "العلامة",
     rows: [["أحمد بن يوسف","15.5"],["سارة قادري","17"],["ياسين مراد","12.75"]],
     matched: "3 علامات مقروءة", safe: "راجع النتائج قبل اعتمادها",
     workflowEyebrow: "من الورقة إلى النتيجة", workflowTitle: "ثلاث خطوات. والباقي على نُقطة.",
@@ -70,7 +70,7 @@ const copy = {
     primary: "Explore the app", secondary: "How it works",
     proof: ["Made for Algerian teachers", "Review before saving", "No monthly subscription"],
     previewLabel: "Illustrative preview", phoneTitle: "Grade sheet", phoneSub: "Class: 3 Middle School · Maths",
-    scan: "Reading your sheet…", found: "Marks recognised", student: "Student", mark: "Mark",
+    scan: "Reading your marks…", scanProgress: "40%", cancel: "Cancel", scanStart: "Start scan", found: "Marks recognised", student: "Student", mark: "Mark",
     rows: [["Ahmed Benyoussef","15.5"],["Sarah Kadri","17"],["Yacine Mourad","12.75"]],
     matched: "3 marks recognised", safe: "Review results before confirming",
     workflowEyebrow: "From paper to results", workflowTitle: "Three simple steps. Nuktah handles the rest.",
@@ -161,22 +161,48 @@ export default function Landing({ locale }: { locale: Locale }) {
         <div className="hero-art" aria-label={t.previewLabel}>
           <div className="art-orbit orbit-one" /><div className="art-orbit orbit-two" />
           <div className="art-note note-top"><Sparkles size={15} /><span>{t.matched}</span></div>
-          <div className="phone">
+          <div className="phone scan-phone">
             <div className="phone-island" />
-            <div className="phone-content">
-              <div className="phone-top"><span className="mini-logo">ن</span><span className="phone-kebab">•••</span></div>
-              <div className="phone-heading"><div><b>{t.phoneTitle}</b><small>{t.phoneSub}</small></div><span className="phone-file"><FileText size={17} /></span></div>
-              <div className="scan-paper">
-                <div className="paper-head"><span>كشف العلامات</span><span>2025 / 2026</span></div>
-                <div className="paper-grid"><span>الاسم</span><span>اللقب</span><span>العلامة</span></div>
-                {[0,1,2,3,4].map((n) => <div className="paper-row" key={n}><i /><i /><i /></div>)}
-                <div className="scan-line" />
-                <div className="paper-stamp"><ScanLine size={13} /> SCANNED</div>
+            <div className="scan-camera">
+              <div className="scan-topbar">
+                <span className="scan-tool"><Crop size={15} /></span>
+                <span className="scan-next"><ArrowRight size={19} /></span>
               </div>
-              <div className="read-status"><span className="status-check"><Check size={13} /></span><span>{t.scan}</span><span className="status-pulse" /></div>
-              <div className="results-head"><b>{t.found}</b><span>✓</span></div>
-              <div className="results-table"><div className="results-row results-label"><span>{t.student}</span><span>{t.mark}</span></div>{t.rows.map((r) => <div className="results-row" key={r[0]}><span>{r[0]}</span><b>{r[1]}</b></div>)}</div>
-              <div className="review-hint"><ShieldCheck size={14} />{t.safe}</div>
+
+              <div className="scan-sheet">
+                <div className="sheet-title">كشف نقاط التقييم</div>
+                <div className="sheet-subtitle">اللغة العربية · القسم 3 متوسط</div>
+                <div className="sheet-columns"><i /><i /><i /><i /><i /></div>
+                {Array.from({ length: 12 }).map((_, i) => (
+                  <div className="sheet-row" key={i}>
+                    <i /><i /><i /><i /><i />
+                  </div>
+                ))}
+              </div>
+
+              <div className="scan-dim" />
+              <div className="scan-frame">
+                <span className="corner corner-tl" /><span className="corner corner-tr" />
+                <span className="corner corner-bl" /><span className="corner corner-br" />
+                <span className="scan-target"><ScanLine size={35} /></span>
+              </div>
+
+              <div className="scan-progress">
+                <div className="scan-progress-title"><b>{t.scan}</b></div>
+                <div className="scan-progress-bar"><span /></div>
+                <strong>{t.scanProgress}</strong>
+                <button className="scan-cancel" type="button">{t.cancel}</button>
+              </div>
+
+              <div className="scan-start"><ScanLine size={16} />{t.scanStart}</div>
+
+              <div className="scan-bottom-nav">
+                <span><UserRound size={17} /></span>
+                <span><BarChart3 size={17} /></span>
+                <span className="active"><ScanLine size={18} /></span>
+                <span><Folder size={17} /></span>
+                <span><Home size={17} /></span>
+              </div>
             </div>
           </div>
           <div className="art-note note-bottom"><span className="note-icon"><Check size={15} /></span><span>{t.matched}</span></div>

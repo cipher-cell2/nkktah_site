@@ -8,6 +8,13 @@ export const metadata: Metadata = {
     template: "%s | Nuktah"
   },
   description: "Nuktah helps Algerian teachers read handwritten grade sheets, match marks to students by matricule, and review every result before saving.",
+  alternates: {
+    canonical: "/",
+    languages: {
+      "ar-DZ": "/",
+      "en": "/en"
+    }
+  },
   openGraph: {
     title: "Nuktah — خلّي النقطة توصل لصاحبها",
     description: "حوّل ورقة العلامات المكتوبة بخط اليد إلى نتائج رقمية مرتّبة.",

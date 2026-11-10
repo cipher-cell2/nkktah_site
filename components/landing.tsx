@@ -204,7 +204,7 @@ export default function Landing({ locale }: { locale: Locale }) {
 
       <section className="final-cta"><div className="final-cta-inner"><div className="final-spark"><Sparkles size={22} /></div><h2>{t.finalTitle}</h2><p>{t.finalBody}</p><a className="button button-light" href={playUrl} target="_blank" rel="noreferrer">{t.finalCta}<IconArrow size={17} /></a><small>{t.play}</small></div><div className="cta-decoration cta-decoration-one" /><div className="cta-decoration cta-decoration-two" /></section>
 
-      <footer className="site-footer"><div className="footer-inner"><a className="brand footer-brand" href={isAr ? "/" : "/en"}><span className="brand-mark"><span /></span><span>{t.brand}</span></a><p>{t.footer}</p><div className="footer-links"><a href="/privacy">{t.footerLinks[0]}</a><a href="/terms">{t.footerLinks[1]}</a><a href="mailto:support@nuktah.app">{t.footerLinks[2]}</a></div><span className="copyright">© {new Date().getFullYear()} Nuktah</span></div></footer>
+      <footer className="site-footer"><div className="footer-inner"><a className="brand footer-brand" href={isAr ? "/" : "/en"}><span className="brand-mark"><span /></span><span>{t.brand}</span></a><p>{t.footer}</p><div className="footer-links"><a href={isAr ? "/privacy" : "/en/privacy"}>{t.footerLinks[0]}</a><a href={isAr ? "/terms" : "/en/terms"}>{t.footerLinks[1]}</a><a href={isAr ? "/support" : "/en/support"}>{t.footerLinks[2]}</a></div><span className="copyright">© {new Date().getFullYear()} Nuktah</span></div></footer>
     </main>
   );
 }

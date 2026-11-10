@@ -199,3 +199,14 @@ button{font:inherit}
   .screenshot-frame{min-height:390px;padding:14px}
   .screenshot-frame img{width:min(290px,78%)}
 }
+
+
+.not-found{min-height:100vh;display:grid;place-items:center;align-content:center;text-align:center;padding:32px;background:radial-gradient(circle at 50% 35%,#e8f2e9 0,transparent 34%),var(--paper)}
+.not-found-mark{width:64px;height:64px;border-radius:20px;background:var(--green);display:grid;place-items:center;margin-bottom:20px;transform:rotate(-7deg);box-shadow:0 16px 35px #176b4b22}
+.not-found-mark span{width:23px;height:23px;border:3px solid #fff;border-radius:7px;position:relative}
+.not-found-mark span:after{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:#d8bd72;top:-6px;right:-6px}
+.not-found h1{font-size:clamp(34px,6vw,58px);letter-spacing:-1.5px;margin:16px 0 8px}
+.not-found p{color:#718078;font-size:15px;margin:0 0 25px}
+.not-found-en{margin-top:14px;color:var(--green);font-size:12px;font-weight:700}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scan-line{animation:none}.button,.feature-card{transition:none}}
+:focus-visible{outline:3px solid #c9dfd0;outline-offset:3px}

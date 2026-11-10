@@ -123,7 +123,7 @@ export default function Landing({ locale }: { locale: Locale }) {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const navIds = ["workflow", "features", "pricing", "faq"];
-  const IconArrow = isAr ? ArrowLeft : ArrowUpLeft;
+  const IconArrow = isAr ? ArrowLeft : ArrowUpLeft;\n  const featureItems = t.features as [string, string, typeof ScanLine][];
 
   return (
     <main lang={t.lang} dir={t.dir}>
@@ -192,7 +192,7 @@ export default function Landing({ locale }: { locale: Locale }) {
 
       <section className="features-section" id="features"><div className="section-wrap">
         <div className="section-heading"><span className="eyebrow">{t.featureEyebrow}</span><h2>{t.featureTitle}</h2></div>
-        <div className="features-grid">{t.features.map(([title, desc, Icon]) => <article className="feature-card" key={title as string}><span className="feature-icon"><Icon size={21} /></span><h3>{title as string}</h3><p>{desc as string}</p></article>)}</div>
+        <div className="features-grid">{featureItems.map(([title, desc, Icon]) => <article className="feature-card" key={title as string}><span className="feature-icon"><Icon size={21} /></span><h3>{title as string}</h3><p>{desc as string}</p></article>)}</div>
       </div></section>
 
       <section className="control-section section-wrap"><div className="control-visual"><div className="control-card"><div className="control-card-top"><span><ShieldCheck size={17} /> {isAr ? "مراجعة الأستاذ" : "Teacher review"}</span><span className="control-badge"><Check size={12} />{isAr ? "قيد المراجعة" : "In review"}</span></div>{t.rows.map((r, i) => <div className="control-row" key={r[0]}><span className="control-avatar">{r[0].slice(0,1)}</span><span className="control-name">{r[0]}</span><strong>{r[1]}</strong><span className={i === 1 ? "edit-tag" : "ok-tag"}>{i === 1 ? (isAr ? "تعديل" : "Edit") : <Check size={14} />}</span></div>)}<div className="control-confirm"><LockKeyhole size={15} />{t.safe}</div></div></div><div className="control-copy"><span className="eyebrow">{t.controlEyebrow}</span><h2>{t.controlTitle}</h2><p>{t.controlBody}</p><ul>{t.controlPoints.map((point) => <li key={point}><Check size={17} />{point}</li>)}</ul></div></section>

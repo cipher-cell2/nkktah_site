@@ -1,35 +1,20 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import './globals.css';
+import { Analytics } from '@vercel/analytics/react';
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://nuktah.app"),
-  title: {
-    default: "Nuktah — من ورقة العلامات إلى نتائج مرتّبة",
-    template: "%s | Nuktah"
-  },
-  description: "Nuktah helps Algerian teachers read handwritten grade sheets, match marks to students by matricule, and review every result before saving.",
-  alternates: {
-    canonical: "/",
-    languages: {
-      "ar-DZ": "/",
-      "en": "/en"
-    }
-  },
+export const metadata = {
+  title: 'Nuktah — Stop entering grades twice.',
+  description: 'Photograph a handwritten grade sheet. Nuktah reads it, matches every student, and turns it into organized digital grades.',
+  metadataBase: new URL('https://nuktah.app'),
+  alternates: { canonical: 'https://nuktah.app' },
   openGraph: {
-    title: "Nuktah — خلّي النقطة توصل لصاحبها",
-    description: "حوّل ورقة العلامات المكتوبة بخط اليد إلى نتائج رقمية مرتّبة.",
-    url: "https://nuktah.app",
-    siteName: "Nuktah",
-    locale: "ar_DZ",
-    type: "website"
-  },
-  robots: { index: true, follow: true }
+    title: 'Nuktah — Stop entering grades twice.',
+    description: 'From paper grade sheet to organized digital grades.',
+    url: 'https://nuktah.app',
+    siteName: 'Nuktah',
+    type: 'website'
+  }
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <html lang="ar" dir="rtl">
-      <body>{children}</body>
-    </html>
-  );
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return <html lang="en"><body>{children}<Analytics /></body></html>;
 }

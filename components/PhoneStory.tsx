@@ -15,7 +15,7 @@ const steps = [
 const screenStates = [
   { label:'Import sheet', badge:'Ready to scan', rows:['Handwritten sheet','Camera / gallery','Start scan'] },
   { label:'Scanning', badge:'Document detected', rows:['Finding page edges','Reading handwriting','Processing…'] },
-  { label:'Extracted grades', badge:'24 rows found', rows:['Ahmed · MAT-10234 · 15','Sara · MAT-10235 · 17','Yasmine · MAT-10236 · 14'] },
+  { label:'Extracted grades', badge:'Grades found', rows:['Ahmed · MAT-10234 · 15','Sara · MAT-10235 · 17','Yasmine · MAT-10236 · 14'] },
   { label:'Student matching', badge:'Matches found', rows:['MAT-10234 → Ahmed ✓','MAT-10235 → Sara ✓','MAT-10236 → Yasmine ✓'] },
   { label:'Review', badge:'Your approval', rows:['Ahmed · 15 · ✓','Sara · 17 · ✓','Yasmine · 14 · Edit'] },
   { label:'Class ready', badge:'Saved successfully', rows:['Grades organized ✓','Reports available ✓','Excel / PDF export ✓'] }

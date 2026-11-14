@@ -63,7 +63,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="absolute -left-10 top-16 pill shadow-lg">Sheet scanned ✓</div>
-              <div className="absolute -right-8 top-1/2 pill shadow-lg">24 students matched</div>
+              <div className="absolute -right-8 top-1/2 pill shadow-lg">Students matched ✓</div>
               <div className="absolute -left-6 bottom-14 pill shadow-lg">Excel ready</div>
             </div>
           </Reveal>
